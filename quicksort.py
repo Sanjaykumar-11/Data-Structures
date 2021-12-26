@@ -33,6 +33,6 @@ arr = list(map(int, input("Enter the element of the array :").split(' ')))
 quicksort(0, len(arr)-1, arr)
 print("Sorted array: ",arr)
 
-#Time complexity:
+#Time complexity:-
 #best case: O(nlogn)
 #worst case: O(n**2)
