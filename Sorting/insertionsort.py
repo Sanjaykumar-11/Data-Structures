@@ -9,6 +9,7 @@ def insertionsort(arr):
         arr[j+1] = temp
     return arr
 
+ 
 l = list(map(int, input("Enter the elemtents of the array: ").split()))
 print(insertionsort(l))
 
