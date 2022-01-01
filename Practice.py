@@ -142,7 +142,7 @@
 
 
 
-#
+# longest subarray with equal number of alpha and numbers
 
 # s = input()
 # pos = 0
@@ -210,7 +210,7 @@
 
 
 
-#
+# Board game
 
 # R, C = map(int, input().split())
 # matrix = []
@@ -269,6 +269,12 @@
 #         ans[i][j] = (ans[i][j-1]+matrix[i][j]) if ans[i][j-1]>ans[i-1][j] else (ans[i-1][j]+matrix[i][j])
 
 # print(ans[R-1][C-1])
+
+
+
+
+
+
 
 # R, C = map(int, input().split())
 # matrix = []
