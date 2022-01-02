@@ -40,6 +40,12 @@
 // 	}
 // }
 
+
+
+
+
+
+
 // import java.util.*;
 // public class Hello {
 
@@ -81,6 +87,9 @@
 
 // 	}
 // }
+
+
+
 
 
 // import java.util.*;
@@ -125,6 +134,13 @@
 // 	}
 // }
 
+
+
+
+
+
+
+
 // import java.util.*;
 // public class Hello 
 // {
@@ -152,6 +168,14 @@
 //     	}
 //     }
 // }
+
+
+
+
+
+
+
+
 
 
 // import java.util.*;
@@ -183,5 +207,105 @@
 // 	        }
 // 	    }
 // 	    System.out.println(ctr);
+// 	}
+// }
+
+
+
+
+
+
+// STRING PERMUTATION
+
+// import java.util.*;
+// public class Hello 
+// {
+//     public void permute(char[] str, int left, int right)
+//     {
+//         if(left==right)
+//         {
+//             System.out.println(String.valueOf(str));
+//             return;
+//         }
+//         for(int i = left; i <= right; i++)
+//         {
+//             char temp = str[left];
+//             str[left] = str[i];
+//             str[i] = temp;
+//             //System.out.println("above");
+//             permute(str, left+1, right);
+//             //System.out.println("below");
+//             temp = str[left];
+//             str[left] = str[i];
+//             str[i] = temp;
+//         }
+//     }
+//     public static void main(String[] args) 
+//     {
+//         Hello per = new Hello();
+        
+// 		Scanner input = new Scanner(System.in);
+		
+// 		String s = input.nextLine();
+		
+// 		char[] str = s.toCharArray();
+		
+// 		per.permute(str, 0, str.length-1);
+
+// 	}
+// }
+
+
+
+
+
+
+// Permutation Nearest Value
+
+// import java.util.*;
+// public class Hello {
+//     public int nearest;
+//     public int current;
+    
+//     public void permute(char[] str, int left, int right)
+//     {
+//         if(left==right)
+//         {
+//             int curr = Integer.parseInt(String.valueOf(str));
+//             if(Math.abs(nearest - curr) < Math.abs(nearest - current))
+//             {
+//                // System.out.println(curr);
+//                 this.current = curr;
+//             }
+//             return;
+//         }
+//         for(int i=left; i<=right; i++)
+//         {
+//             char temp = str[left];
+//             str[left] = str[i];
+//             str[i] = temp;
+            
+//             permute(str, left+1, right);
+            
+//             temp = str[left];
+//             str[left] = str[i];
+//             str[i] = temp;
+//         }
+//     }
+
+//     public static void main(String[] args) {
+// 		Scanner input = new Scanner(System.in);
+// 		Hello per = new Hello();
+		
+// 		String s = input.next();
+//         String n = input.next();
+
+// 		per.nearest = Integer.valueOf(n);
+		
+// 		char[] str = s.toCharArray();
+		
+// 		per.permute(str, 0, str.length-1);
+
+//         System.out.println(per.current);
 // 	}
 // }

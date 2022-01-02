@@ -371,35 +371,6 @@
 
 
 
-
-
-# n = int(input())
-# down = 0
-# up = 0
-# for i in range(1,n+1):
-#     up = ((n-i)*2)+1
-#     #print(down)
-#     down = ((i-1)*2)+1
-#     #print(up)
-#     prev = 0
-#     for j in range(n):
-#         if(j==0):
-#             print(i, end=" ")
-#             prev = i
-#         elif(j%2==1):
-#             prev = prev+up
-#             print(prev, end=" ")
-#         elif(j%2==0):
-#             prev = prev+down
-#             print(prev, end=" ")
-#     prev = 0
-#     print()
-
-
-
-
-
-
 # n = int(input())
 # down = 0
 # up = 0
