@@ -96,3 +96,91 @@
 //     reverse(str, 0);
 //     return 0;
 // }
+
+
+
+
+
+
+
+//Prime number 1 to N
+// Sieve of Eratosthenes
+
+
+// #include<stdio.h>
+// #include<stdlib.h>
+
+// int main()
+// {
+//     int N;
+//     scanf("%d", &N);
+    
+//     int prime[N+1];
+    
+//     for(int i=2; i<=N; i++)
+//     {
+//         prime[i] = 1;
+//     }
+    
+//     for(int i=2; i*i<=N; i++)
+//     {
+//         if(prime[i]==1)
+//         {
+//             for(int j = i*i; j<=N; j=j+i)
+//             {
+//                 prime[j] = 0;
+//             }
+//         }
+//     }
+    
+//     for(int i=2; i<=N; i++)
+//     {
+//         if(prime[i]==1)
+//         {
+//             printf("%d ", i);
+//         }
+//     }
+
+// }
+
+// Time complexity: O(n*log(log(n)))
+
+
+
+
+
+
+
+//GCD or HCF - Euclidian algorithm
+
+// #include <stdio.h>
+// #include<stdlib.h>
+// #define ULL unsigned long long int
+
+// ULL hcf(ULL a, ULL b)
+// {
+//     if(b==0)
+//     {
+//         return a;
+//     }
+//     else
+//     {
+//         hcf(b, a%b);
+//     }
+// }
+
+// int main()
+// {
+//     int n;
+//     scanf("%d", &n);
+    
+//     ULL ans, current;
+//     scanf("%llu", &ans);
+    
+//     for(int i=2; i<=n; i++)
+//     {
+//         scanf("%llu", &current);
+//         ans = hcf(ans, current);
+//     }
+//     printf("%llu", ans);
+// }
