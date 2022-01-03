@@ -439,3 +439,31 @@
 # A, B = map(int, input().split())
 # s = "{:b}".format(A^B)
 # print(s.count('1'))
+
+
+# import time
+
+
+# n=int(input())
+# start=time.time()
+# primes={}
+# for i in range(2,n+1):
+#     primes[i]=1
+
+# val=2
+# for i in range(2,n+1):
+#     val=i*i
+#     if val<=n:
+#         if primes[val]==1:
+#             while val<=n:
+#                 primes[val]=0
+#                 val+=i
+#     else:
+#         break
+
+        
+# for i in range(2,n+1):
+#     if primes[i]==1:
+#         print(i,end=" ")
+# end=time.time()
+# print(end-start)
