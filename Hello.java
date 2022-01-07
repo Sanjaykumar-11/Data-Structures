@@ -309,3 +309,370 @@
 //         System.out.println(per.current);
 // 	}
 // }
+
+// import java.util.*;
+// class Slot
+// {
+//     int r;
+//     int c;
+// }
+
+// public class Hello {
+    
+//     static int n = 9;
+    
+//     private static boolean solve(int[][] matrix)
+//     {
+//         Slot freeSlot = getFreeSlot(matrix);
+//         if(freeSlot==null)
+//         {
+//             return true;
+//         }
+//         for(int digit=1; digit<=9; digit++)
+//         {
+//             if(canFillRow(matrix, freeSlot, digit) && canFillCol(matrix, freeSlot, digit) &&
+//             canFillSubMatrix(matrix, freeSlot, digit))
+//             {
+//                 if(solve(matrix))
+//                 {
+//                     return true;
+//                 }
+//                 matrix[freeSlot.r][freeSlot.c]=0;
+//             }
+//         }
+//         return false;
+//     }
+    
+//     private static boolean canFillCol(int[][] matrix, Slot freeSlot, int digit)
+//     {
+//         for(int row=0; row<n; row++)
+//         {
+//             if(matrix[row][freeSlot.c]==digit)
+//             {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+    
+//     private static boolean canFillRow(int[][] matrix, Slot freeSlot, int digit)
+//     {
+//         for(int col=0; col<n; col++)
+//         {
+//             if(matrix[freeSlot.r][col] == digit)
+//             {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+    
+//     private static Slot getFreeSlot(int[][] matrix)
+//     {
+//         for(int i=0; i<n; i++)
+//         {
+//             for(int j=0; j<n; j++)
+//             {
+//                 if(matrix[i][j]==0)
+//                 {
+//                     Slot slot = new Slot();
+//                     slot.r = i;
+//                     slot.c = j;
+//                     return slot;
+//                 }
+//             }
+//         }
+//         return null;
+//     }
+//     private static boolean canFillSubMatrix(int[][] matrix, Slot freeSlot, int digit)
+//     {
+//         int rowStart = (freeSlot.r/3)*3;
+//         int colStart = (freeSlot.c/3)*3;
+        
+//         for(int row = rowStart; row<=rowStart+2; row++)
+//         {
+//             for(int col=colStart; col<=colStart+2; col++)
+//             {
+            
+//                 if (matrix[row][col]==digit)
+//                 {
+//                     return false;
+//                 }
+//             }
+//         }
+//         return true;
+//     }
+    
+    
+    
+    
+//     public static void main(String[] args) {
+// 		Scanner input = new Scanner(System.in);
+// 		int matrix[][] = new int[n][n];
+// 		for(int i=0; i<n; i++)
+// 		{
+// 		    for(int j=0; j<n; j++)
+// 		    {
+// 		        matrix[i][j] = input.nextInt();
+// 		    }
+// 		}
+// 		if(solve(matrix))
+// 		{
+// 		    for(int i=0; i<n; i++)
+// 		    {
+// 		        for(int j=0; j<n; j++)
+// 		        {
+// 		            System.out.print(matrix[i][j]);
+// 		        }
+// 		    }
+// 		    System.out.println();
+// 		}
+// 		else
+// 		{
+// 		    System.out.println("Not Solved");
+// 		}
+// 	}
+// }
+
+import java.util.*;
+class Slot
+{
+    int r;
+    int c;
+}
+
+public class Hello {
+    
+    static int n = 9;
+    
+    public static boolean solve(int[][] matrix)
+    {
+        Slot freeSlot = getFreeSlot(matrix);
+        if(freeSlot==null)
+        {
+            return true;
+        }
+        for(int digit=1; digit<=9; digit++)
+        {
+            if(canFillRow(matrix, freeSlot, digit) && canFillCol(matrix, freeSlot, digit) &&
+            canFillSubMatrix(matrix, freeSlot, digit))
+            {
+                matrix[freeSlot.r][freeSlot.c]=digit;
+                if(solve(matrix))
+                {
+                    return true;
+                }
+                matrix[freeSlot.r][freeSlot.c]=0;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean canFillCol(int[][] matrix, Slot freeSlot, int digit)
+    {
+        for(int row=0; row<n; row++)
+        {
+            if(matrix[row][freeSlot.c]==digit)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static boolean canFillRow(int[][] matrix, Slot freeSlot, int digit)
+    {
+        for(int col=0; col<n; col++)
+        {
+            if(matrix[freeSlot.r][col] == digit)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static Slot getFreeSlot(int[][] matrix)
+    {
+        for(int i=0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    Slot slot = new Slot();
+                    slot.r = i;
+                    slot.c = j;
+                    return slot;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    public static boolean canFillSubMatrix(int[][] matrix, Slot freeSlot, int digit)
+    {
+        int rowStart = (freeSlot.r/3)*3;
+        int colStart = (freeSlot.c/3)*3;
+        
+        for(int row = rowStart; row<=rowStart+2; row++)
+        {
+            for(int col=colStart; col<=colStart+2; col++)
+            {
+            
+                if (matrix[row][col]==digit)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    
+    
+    
+    public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int matrix[][] = new int[n][n];
+		for(int i=0; i<n; i++)
+		{
+		    for(int j=0; j<n; j++)
+		    {
+		        matrix[i][j] = input.nextInt();
+		    }
+		}
+		if(solve(matrix))
+		{
+		    for(int i=0; i<n; i++)
+		    {
+		        for(int j=0; j<n; j++)
+		        {
+		            System.out.print(matrix[i][j]);
+		        }
+		    }
+		    System.out.println();
+		}
+		else
+		{
+		    System.out.println("Not Solved");
+		}
+	}
+}
+    
+    
+    
+    
+//     public static void main(String[] args) {
+// 		Scanner input = new Scanner(System.in);
+// 		int matrix[][] = new int[n][n];
+// 		for(int i=0; i<n; i++)
+// 		{
+// 		    for(int j=0; j<n; j++)
+// 		    {
+// 		        matrix[i][j] = input.nextInt();
+// 		    }
+// 		}
+// 		if(solve(matrix))
+// 		{
+// 		    for(int i=0; i<n; i++)
+// 		    {
+// 		        for(int j=0; j<n; j++)
+// 		        {
+// 		            System.out.print(matrix[i][j]);
+// 		        }
+// 		    }
+// 		    System.out.println();
+// 		}
+// 		else
+// 		{
+// 		    System.out.println("Not Solved");
+// 		}
+// 	}
+// }
+
+
+//Maximum sub matrix sum
+// import java.util.*;
+// public class Hello {
+
+//     public static void main(String[] args) {
+// 		Scanner input = new Scanner(System.in);
+		
+// 		int R = input.nextInt();
+// 		int C = input.nextInt();
+		
+// 		int rowSum[][] = new int[R][C+1];
+		
+// 		for(int i=0; i<R; i++)
+// 		{
+// 		    for(int j=1; j<=C; j++)
+// 		    {
+// 		        int val = input.nextInt();
+// 		        rowSum[i][j] = val + rowSum[i][j-1];
+// 		    }
+// 		}
+// 		int K = input.nextInt();
+// 		int maximumSum = 0;
+// 		for(int i=0; i<=R-K; i++)
+// 		{
+// 		    for(int j=1; j<=C-K+1; j++)
+// 		    {
+// 		        int sum = 0;
+// 		        for(int sumrow = i; sumrow<i+K; sumrow++)
+// 		        {
+// 		            sum += rowSum[sumrow][j+K-1] - rowSum[sumrow][j-1];
+// 		        }
+// 		        if(sum>maximumSum)
+// 		        {
+// 		            maximumSum = sum;
+// 		        }
+// 		    }
+// 		}
+// 		System.out.println(maximumSum);
+
+// 	}
+// }
+
+//Minimum submatrix sum
+// import java.util.*;
+// public class Hello {
+
+//     public static void main(String[] args) {
+// 		Scanner input = new Scanner(System.in);
+		
+// 		int R = input.nextInt();
+// 		int C = input.nextInt();
+		
+// 		int rowSum[][] = new int[R][C+1];
+		
+// 		for(int i=0; i<R; i++)
+// 		{
+// 		    for(int j=1; j<=C; j++)
+// 		    {
+// 		        int val = input.nextInt();
+// 		        rowSum[i][j] = val + rowSum[i][j-1];
+// 		    }
+// 		}
+		
+// 		int K = input.nextInt();
+// 		int minimumSum = Integer.MAX_VALUE;
+// 		for(int i=0; i<=R-K; i++)
+// 		{
+// 		    for(int j=1; j<=C-K+1; j++)
+// 		    {
+// 		        int sum = 0;
+// 		        for(int sumrow=i; sumrow<i+K; sumrow++)
+// 		        {
+// 		            sum += rowSum[sumrow][j+K-1]-rowSum[sumrow][j-1];
+// 		        }
+//                 if(sum<minimumSum)
+//                 {
+//                     minimumSum = sum;
+//                 }
+// 		    }
+// 		}
+//         System.out.println(minimumSum);
+// 	}
+// }

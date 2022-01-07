@@ -184,3 +184,44 @@
 //     }
 //     printf("%llu", ans);
 // }
+
+#include <stdio.h>
+int main()
+{
+    int arr[3];
+    scanf("%d %d %d", &arr[0], &arr[1], &arr[2]);
+    int flag2 = 1;
+    int flag3 = 1;
+    for(int i=0; i<3; i++)
+    {
+        if(arr[i]%2==0 && flag2==1)
+        {
+            arr[i] = -1;
+            flag2 = 0;
+        }
+        else if(arr[i]%3==0 && flag3==1)
+        {
+            arr[i] = -1;
+            flag3 = 0;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    if(flag2==0 && flag3==0)
+    {
+        for(int i=0; i<3; i++)
+        {
+            if(arr[i]!=-1)
+            {
+                printf("%d", arr[i]);
+            }
+        }
+    }
+    else
+    {
+        printf("-1");
+    }
+}
+

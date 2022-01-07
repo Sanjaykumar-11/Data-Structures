@@ -467,3 +467,43 @@
 #         print(i,end=" ")
 # end=time.time()
 # print(end-start)
+
+import sys
+sys.setrecursionlimit(10**8)
+
+def FindWord(arr, row, col, S, index):
+    global R, C, flag
+    if(row<R and col<C and row>=0 and col>=0):
+        if index == len(S):
+            flag = 1
+            return
+        else:
+            if arr[row][col]==S[index]:
+                temp = arr[row][col]
+                arr[row][col]="-"
+                FindWord(arr, row, col-1, S, index+1)
+                FindWord(arr, row, col+1, S, index+1)
+                FindWord(arr, row+1, col, S, index+1)
+                FindWord(arr, row-1, col, S, index+1)
+                arr[row][col] = temp
+            else:
+                return
+
+R, C = map(int, input().split())
+arr = []
+for i in range(R):
+    l = list(input().split())
+    arr.append(l)
+S = input()
+flag = 0
+for i in range(R):
+    if flag==1:
+        break
+    for j in range(C):
+        if arr[i][j]==S[0]:
+            FindWord(arr, i, j, S, 0)
+            if flag==1:
+                print("yes")
+                break
+if flag==0:
+    print("no")
