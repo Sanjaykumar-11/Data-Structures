@@ -35,7 +35,6 @@
 #     return nodes
 
 
-
 # queue = deque()
 
 # N = int(input())
@@ -52,12 +51,23 @@
 
 # #converting 2D to 1D position
 
+# [[9 6 2], 
+# [8 5 4],
+# [6 7 2],
+# [3,3,3]]
+# 2D array can be transformed to [9, 6, 2, 8, 5, 4, 6, 7, 2, 3, 3, 3]
+# Index can be achieved by 1d_index = row*(total number of col) + col
+# arr[2][1] => 2*3 + 1 = 9
+
+
+
 # source = source_row*N + source_col
 # destination = destination_row*N + destination_col
 
 # visited = [False for i in range(N*N)]
 
 # streets = [0 for i in range(N*N)]
+
 # queue.append(source)
 # visited[source] = True
 # streets[source] = 0
@@ -80,62 +90,64 @@
 
 
 
-from collections import deque
+# CORONA VIRUS
 
-R, C = map(int, input().split())
-matrix = []
+# from collections import deque
 
-healthy = 0
-queue = deque()
-days = 0
+# R, C = map(int, input().split())
+# matrix = []
 
-for i in range(R):
-    l = list(map(int, input().split()))
-    for j in range(C):
-        if l[j]==1:
-            healthy+=1
-        if l[j]==2:
-            queue.append(i*C+j)
-    matrix.append(l)
+# healthy = 0
+# queue = deque()
+# days = 0
+
+# for i in range(R):
+#     l = list(map(int, input().split()))
+#     for j in range(C):
+#         if l[j]==1:
+#             healthy+=1
+#         if l[j]==2:
+#             queue.append(i*C+j)
+#     matrix.append(l)
 
 
-queue.append(-1)
+# queue.append(-1)
 
-while len(queue) != 0:
-    node = queue.popleft()
-    if node==-1:
-        if len(queue)==0:
-            continue
-        else:
-            days += 1
-            queue.append(-1)
+# while len(queue) != 0:
+#     node = queue.popleft()
+#     if node==-1:
+#         if len(queue)==0:
+#             continue
+#         else:
+#             days += 1
+#             queue.append(-1)
     
-    else:    
-        row = node//C
-        col = node%C
-        if col!=0 and matrix[row][col-1]==1:
-            matrix[row][col-1] = 2
-            queue.append(row*C+col-1)
-            healthy -=1
+#     else:    
+#         row = node//C
+#         col = node%C
+#         if col!=0 and matrix[row][col-1]==1:
+#             matrix[row][col-1] = 2
+#             queue.append(row*C+col-1)
+#             healthy -=1
         
-        if col!=C-1 and matrix[row][col+1]==1:
-            matrix[row][col+1]=2
-            queue.append(row*C+col+1)
-            healthy -= 1
+#         if col!=C-1 and matrix[row][col+1]==1:
+#             matrix[row][col+1]=2
+#             queue.append(row*C+col+1)
+#             healthy -= 1
         
-        if row!=0 and matrix[row-1][col]==1:
-            matrix[row-1][col]=2
-            queue.append((row-1)*C+col)
-            healthy -= 1
+#         if row!=0 and matrix[row-1][col]==1:
+#             matrix[row-1][col]=2
+#             queue.append((row-1)*C+col)
+#             healthy -= 1
             
-        if row!=R-1 and matrix[row+1][col]==1:
-            matrix[row+1][col]=2
-            queue.append((row+1)*C+col)
-            healthy -= 1
+#         if row!=R-1 and matrix[row+1][col]==1:
+#             matrix[row+1][col]=2
+#             queue.append((row+1)*C+col)
+#             healthy -= 1
             
         
     
-print(days if healthy==0 else -1)
+# print(days if healthy==0 else -1)
     
     
     
