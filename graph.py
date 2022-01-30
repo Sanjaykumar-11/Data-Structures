@@ -150,7 +150,138 @@
 # print(days if healthy==0 else -1)
     
     
+# import sys
+# sys.setrecursionlimit(10**8)
+
+
+# def maximum_revenue(wine_prices, maximum, left, right, year):
+#     if maximum[left][right] != 0:
+#         return maximum[left][right]
     
+#     if left==right:
+#         return wine_prices[left]*year
+    
+#     left_revenue = wine_prices[left]*year + maximum_revenue(wine_prices, maximum, left+1, right, year+1)
+    
+#     right_revenue = wine_prices[right]*year + maximum_revenue(wine_prices, maximum, left, right-1, year+1)
+    
+#     maximum[left][right] = max(left_revenue, right_revenue)
+    
+#     return maximum[left][right]
+
+# n = int(input())
+
+# wine_prices = list(map(int, input().split()))
+
+# maximum = [[0 for i in range(n)] for j in range(n)]
+
+# print(maximum_revenue(wine_prices, maximum, 0, n-1, 1))
 
 
+
+# N, R = map(int, input().split())
+
+# people = [0 for i in range(N+1)]
+
+# for i in range(R):
+#     p, follow = map(int, input().split())
+#     people[p] -= 1
+#     people[follow] += 1
+
+# flag = 0
+# for i in range(1, N+1):
+#     if people[i]==N-1:
+#         flag = 1
+#         print(i)
+#         break
+#     else:
+#         continue
+
+# if flag==0:
+#     print(-1)
+
+# from collections import OrderedDict
+
+# foodorder = []
+# fooditems = OrderedDict()
+
+# n = int(input())
+
+# for i in range(n):
+#     l = list(input().split())
+#     foodorder.append(l)
+#     for j in l:
+#         if j not in fooditems:
+#             fooditems[j]=list([])
+
+# # print(fooditems)
+# # print(foodorder)
+
+# for index, items in enumerate(foodorder):
+#     for item in items:
+#         fooditems[item].append(index)
+# print(fooditems)
+
+# items = sorted(fooditems.values(), reverse=True, key=len)
+# print(items)
+
+
+# for i in range(1,len(items)):
+#     t = []
+#     for j in items[i]:
+#         if j not in items[0]:
+#             t.append(j)
+#     items[i] = t
+# print(items)
+
+# items = sorted(items, reverse=True, key=len)
+
+# count = 1
+# val = 1
+# while len(items[0])<n and val<len(items):
+#     items[0] = items[0] + items[val]
+#     val += 1
+#     count += 1
+
+# print(items)
+# print(count)
+
+
+from collections import OrderedDict
+
+foodorder = []
+fooditems = OrderedDict()
+
+n = int(input())
+
+for i in range(n):
+    l = list(input().split())
+    foodorder.append(l)
+    for j in l:
+        if j not in fooditems:
+            fooditems[j]=list([])
+
+for index, items in enumerate(foodorder):
+    for item in items:
+        fooditems[item].append(index)
+
+items = sorted(fooditems.values(), reverse=True, key=len)
+
+for i in range(1, len(items)):
+    t = []
+    for j in items[i]:
+        if j not in items[0]:
+            t.append(j)
+    items[i] = t
+
+items = sorted(items, reverse=True, key=len)
+count = 1
+val = 1
+while len(items[0])<n and val<len(items):
+    items[0] = items[0] + items[val]
+    val += 1
+    count += 1
+    
+print(count)
+        
 

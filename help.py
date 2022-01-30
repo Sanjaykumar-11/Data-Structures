@@ -498,3 +498,303 @@
 #         if row>=R:
 #             row = R-1
 
+
+
+
+
+
+# N, K = map(int, input().split())
+
+# ordered_dict = []
+
+# for i in range(K):
+#     temp = list(map(int, input().split()))
+#     ordered_dict.append(temp)
+    
+# ordered_dict = sorted(ordered_dict)
+
+# table = [[0 for i in range(N+1)] for j in range(K+1)]
+
+# cost = [l[0] for l in ordered_dict]
+# profit = [l[1] for l in ordered_dict]
+# cost.insert(0,0)
+# profit.insert(0,0)
+# flag = 0
+# for item in range(1, K+1):
+#     if cost[item]>N:
+#         print(table[item-1][N])
+#         flag = 1
+#         break
+    
+#     for amount in range(1, N+1):
+#         if amount<cost[item]:
+#             table[item][amount] = table[item-1][amount]
+#         else:
+#             incProfit = profit[item] + table[item-1][amount-cost[item]]
+#             excProfit = table[item-1][amount]
+#             table[item][amount] = max(incProfit, excProfit)
+
+# if flag==0:
+#     print(table[K][N])
+
+
+
+#Largest square matrix with 1s
+
+# R, C = map(int, input().split())
+
+# matrix = []
+
+# for i in range(R):
+#     l = list(map(int, input().split()))
+#     matrix.append(l)
+
+# maxval = 0
+
+# for i in range(1, R):
+#     for j in range(1,C):
+#         if matrix[i][j] != 0:
+#             matrix[i][j] = matrix[i][j] + min(matrix[i-1][j], matrix[i-1][j-1], matrix[i][j-1])
+#             if matrix[i][j]>maxval:
+#                 maxval = matrix[i][j]
+#         else:
+#             continue
+# print(maxval)
+
+
+# import sys
+# sys.setrecursionlimit(10**8)
+
+# def  breakWord(words, s, output, start):
+#     if start == len(s):
+#         print(output.strip())
+#         return
+#     for i in range(start, len(s)):
+#         word = s[start:i+1]
+#         if word in words:
+#             breakWord(words, s, output+word+" ", i+1)
+
+# words = list(input().split())
+
+# s = input()
+
+# breakWord(words, s,"", 0)
+
+
+
+#define pronic function
+# def pronic(n):
+#     if n==0:
+#         return True
+#     for i in range(1, (n//2)+1):
+#         if i*(i+1)==n:
+#             return True
+#     return False
+
+# x = input()
+
+# array = [x[i:j+1] for i in range(len(x)) for j in range(i, len(x))]
+
+# final = []
+
+# for i in array:
+#     if int(i) not in final:
+#         if pronic(int(i)):
+#             final.append(int(i))
+
+
+# def ComputeMax(N, D, K, toll_distance, toll_fares):
+#     revenue = [0 for i in range(N+1)]
+#     revenue[0] = 0
+#     index = 0
+#     for i in range(1, N+1):
+#         if toll_distance[index]==i:
+#             if i<=D:
+#                 revenue[i] = max(revenue[i-1], toll_fares[index])
+#             else:
+#                 revenue[i] = max(revenue[i-1], toll_fares[index]+revenue[i-D-1])
+#             index += 1
+#             if index==K:
+#                 return revenue[i]
+#         else:
+#             revenue[i] = revenue[i-1]
+
+# N, D = map(int, input().split())
+# K = int(input())
+# toll_distance = list(map(int, input().split()))
+# toll_fares = list(map(int, input().split()))
+# print(ComputeMax(N, D, K, toll_distance, toll_fares))
+
+# text = input().strip()
+# wildcard = input().strip()
+
+# matrix = [[0 for i in range(len(wildcard)+1)] for j in range(len(text)+1)]
+
+# matrix[0][0] = 1
+
+# if wildcard[0] == "*":
+#     matrix[0][1] = 1
+
+
+
+# for i in range(1,len(text)+1):
+    
+#     for j in range(1,len(wildcard)+1):
+        
+#         if wildcard[j-1]=="?" or wildcard[j-1]==text[i-1]:
+#             matrix[i][j] = matrix[i-1][j-1]
+            
+#         elif wildcard[j-1]=="*":
+#             if matrix[i-1][j]==1 or matrix[i][j-1]==1:
+#                 matrix[i][j] = 1
+                
+            
+# if matrix[-1][-1]==1:
+#     print("Matching")
+# else:
+#     print("Not matching")
+
+
+# N = int(input())
+# arr = []
+# for i in range(N):
+#     R, C = map(int, input().split())
+#     matrix = []
+#     for i in range(R):
+#         l = list(map(int, input().split()))
+#         matrix.append(l)
+    
+#     for row in range(1,R):
+        
+#         temp = sorted(matrix[row-1])
+#         firstmax = temp[-1]
+#         secondmax = temp[-2]
+        
+#         for col in range(C):
+             
+#             if matrix[row-1][col] != firstmax:
+#                 matrix[row][col] += firstmax
+#             else:
+#                 matrix[row][col] += secondmax
+                
+        
+#     arr.append(max(matrix[-1]))
+
+# for i in arr:
+#     print(i)
+
+# import math
+# def isPronic(n):
+#     global l
+#     n = int(n)
+#     if n==0:
+#         return True
+#     if n in l:
+#         return True
+#     for i in range(1, int(math.sqrt(n))+1):
+#         if(i*(i+1)==n):
+#             return True
+#     return False
+
+# l = []
+# for i in range(1000):
+#     l.append(i*(i+1))
+
+# N = input().strip()
+# right = 0
+# left = 0
+# size = len(N)
+# while(left<size):
+#     right = left
+#     while(right<size):
+#         if isPronic(N[left:right+1]):
+#             print(int(N[left:right+1]), end=" ")
+#             if(N[left]=="0"):
+#                 break
+#             right+=1
+#         else:
+#             right+=1
+#     left += 1
+
+# from collections import deque
+    
+# N, K = map(int, input().strip().split(','))
+
+# alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+# students = [alphabets[i] for i in range(N)]
+    
+# photographs = []
+# for i in range(K):
+#     l = input().strip().split(',')
+#     photographs.append(l)
+
+# missing = False
+
+# for name in students:
+#     rel_count = 0
+#     queue = deque()
+#     visited = []
+#     queue.append(name)
+#     visited.append(name)
+#     while len(queue) != 0:
+#         student = queue.popleft()
+#         for seq in photographs:
+#             if student in seq:
+#                 successor = seq[seq.index(student):]
+#                 for succstd in successor:
+#                     if not succstd in visited:
+#                         queue.append(succstd)
+#                         visited.append(succstd)
+#                         rel_count += 1
+#     queue.append(name)
+    
+#     while len(queue) != 0:
+#         student = queue.popleft()
+#         for seq in photographs:
+#             if student in seq:
+#                 predecessor = seq[0:seq.index(student)+1]
+#                 for prestd in predecessor:
+#                     if not prestd in visited:
+#                         queue.append(prestd)
+#                         visited.append(prestd)
+#                         rel_count += 1
+    
+#     if rel_count!=N-1:
+#         missing = True
+#         print(name, end=" ")
+
+# if not missing:
+#     print("N/A")
+
+
+N = int(input())
+start = []
+end = []
+for i in range(N):
+    l = input().split()
+    start.append(int("".join(l[0].split(':'))))
+    end.append(int("".join(l[1].split(':'))))
+
+computers = 0
+
+start.sort()
+end.sort()
+
+start_index = 0
+end_index = 0
+
+while start_index < len(start) and end_index < len(end):
+    temp = abs(start_index - end_index) + 1
+    if temp>computers:
+        computers = temp
+        
+    if start[start_index] < end[end_index]:
+        start_index += 1
+    else:
+        end_index += 1
+        
+    while end_index < len(end) and start_index < len(start) and end[end_index] <= start[start_index]:
+        end_index += 1
+
+print(computers)
